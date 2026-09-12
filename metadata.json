@@ -1,0 +1,6 @@
+{
+  "name": "Minimalist HTML App Generator",
+  "description": "Generate responsive single-file web apps from natural language using Tailwind CSS.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
