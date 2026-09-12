@@ -1,0 +1,6 @@
+{
+  "appId": "com.example.htmlgenerator",
+  "appName": "Minimalist HTML App Generator",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
