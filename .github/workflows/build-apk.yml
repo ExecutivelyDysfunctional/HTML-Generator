@@ -30,29 +30,33 @@ jobs:
       - name: Build Web Application
         run: npm run build
 
-      # 5. Set up Java JDK (Required for Android builds)
-      - name: Set up JDK 17
+      # 5. Set up Java JDK (Capacitor 7/8 requires Java 21)
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: '21'
 
-      # 6. Install Android SDK Tools
+      # 6. Set up Gradle
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+
+      # 7. Install Android SDK Tools
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      # 7. Sync compiled web assets into the Capacitor Android project
+      # 8. Sync compiled web assets into the Capacitor Android project
       - name: Sync Capacitor Assets
         run: npx cap sync android
 
-      # 8. Build the Android APK using Gradle
+      # 9. Build the Android APK using Gradle
       - name: Build APK with Gradle
         run: |
           cd android
           chmod +x gradlew
           ./gradlew assembleDebug # Produces a debug APK
 
-      # 9. Upload the resulting APK as a build artifact
+      # 10. Upload the resulting APK as a build artifact
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
